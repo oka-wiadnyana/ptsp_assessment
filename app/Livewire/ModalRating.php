@@ -1,0 +1,35 @@
+<?php
+
+namespace App\Livewire;
+
+use App\Models\Unit;
+use Livewire\Attributes\On;
+use Livewire\Component;
+
+class ModalRating extends Component
+{
+    public $show = false;
+    
+    public $data;
+ 
+    #[On('show-modal-rating')]
+    public function showModal()
+    {
+       
+       $this->show = true;
+      
+    }
+ 
+    public function closeModal()
+    {
+ 
+      
+        $this->show = false;
+    }
+ 
+    public function render()
+    {
+        $units=Unit::all();
+        return view('livewire.modal-rating',compact('units'));
+    }
+}
