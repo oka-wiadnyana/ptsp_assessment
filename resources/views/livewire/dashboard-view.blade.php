@@ -33,9 +33,9 @@
     <div class="alert alert-{{ $bg[rand(0,3)] }} d-md-flex" role="alert">
         <div class="col-2 text-center d-md-flex flex-column align-items-center justify-content-center p-0" >
 
-            <img src="{{ asset('officer_image/'.$res->officerName->foto) }}" alt="" class="img-fluid" style="border-radius:50%" width="100rem" >
+            <img src="{{ asset('officer_image/'.$res->officerName?->foto) }}" alt="" class="img-fluid" style="border-radius:50%" width="100rem" >
             <div class="col py-0 h5 fw-bold" style=" line-height:2"><span>
-                {{ $res->officerName->name }}</span> </div>
+                {{ $res->officerName?->name }}</span> </div>
         </div>
         <div class="col d-md-flex align-items-center justify-content-center" >
             @for ($i=1;$i<=5;$i++)

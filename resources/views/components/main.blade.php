@@ -3,11 +3,12 @@
 
 <head>
     <!-- Meta-Information -->
-    <title>Fuzen Admin Panel</title>
+    <title>{{ env('APP_NAME') }}</title>
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('img') }}/logo-text.png">
+    <title>{{ env("APP_NAME") }}</title>
     <!-- Vendor: Bootstrap 4 Stylesheets  -->
     <link rel="stylesheet" href="{{ asset('assets') }}/css/bootstrap.min.css" type="text/css">
 

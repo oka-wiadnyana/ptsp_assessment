@@ -1,16 +1,16 @@
 <?php
-    use App\Models\Officer;
+    use App\Models\Satpam;
     use function Laravel\Folio\name;
     use Illuminate\View\View;
  
     use function Laravel\Folio\render;
 
-    name('/');
+    name('/satpam');
 
-    render(function (View $view, Officer $officers) {
+    render(function (View $view, Satpam $satpams) {
    
     
-    return $view->with('officers', $officers->where('active','true')->get());
+    return $view->with('satpams', $satpams->where('active','true')->get());
 }); 
 
 ?>
@@ -68,19 +68,19 @@
                       
                         <div class="row text-center d-flex flex-column align-items-center">
                             <img src="https://www.pn-denpasar.go.id/assets/img/logo/pt-denpasar.png" alt="" class="" width="100rem">
-                            <span class="h1 title text-white ">REVIEW PETUGAS PTSP</span>
+                            <span class="h1 title text-white ">REVIEW PETUGAS KEAMANAN</span>
                         </div>
                         <div class="glide">
                             <div class="glide__track" data-glide-el="track"><ul class="glide__slides">
-                                @foreach ($officers as $officer)
-                                <a class="btn p-0 text-decoration-none" href="{{ url('assessment/'.$officer->id) }}" style="outline: 0;">
+                                @foreach ($satpams as $satpam)
+                                <a class="btn p-0 text-decoration-none" href="{{ url('assessment_satpam/'.$satpam->id) }}" style="outline: 0;">
                                 <li class="glide__slide">
                                     
                                         <div class="col d-flex flex-column justify-content-center">
                                        
 
                                       
-                                            <img src="{{ asset('officer_image/'.$officer->foto) }}" alt="" class="img-fluid" style="border-radius: 50%"><span class="text-center h3 text-white">{{ $officer->nick_name }}</span>
+                                            <img src="{{ asset('satpam_image/'.$satpam->foto) }}" alt="" class="img-fluid" style="border-radius: 50%"><span class="text-center h3 text-white">{{ $satpam->nick_name }}</span>
                                      
                                         </div>
                                   

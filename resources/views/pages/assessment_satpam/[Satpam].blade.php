@@ -1,5 +1,5 @@
 <?php
-use App\Models\Officer;
+use App\Models\Satpam;
 use function Laravel\Folio\name;
 use Illuminate\View\View;
 
@@ -68,12 +68,12 @@ use Illuminate\View\View;
                         <div class="row text-center d-flex flex-column align-items-center">
                             <img src="https://www.pn-denpasar.go.id/assets/img/logo/pt-denpasar.png" alt=""
                                 class="" width="100rem">
-                            <span class="h1 title text-white ">REVIEW PETUGAS PTSP</span>
-                            <img src="{{ asset('officer_image/' . $officer->foto) }}" alt=""
+                            <span class="h1 title text-white ">REVIEW PETUGAS KEAMANAN</span>
+                            <img src="{{ asset('satpam_image/' . $satpam->foto) }}" alt=""
                                 style="border-radius: 50%">
-                            <span class="text-white h3">{{ $officer->nick_name }}</span>
+                            <span class="text-white h3">{{ $satpam->nick_name }}</span>
                         </div>
-                        <form action="{{ route('result.insert') }}" method="POST">
+                        <form action="{{ route('result_satpam.insert') }}" method="POST">
                             @csrf
                             <div class="row justify-content-center py-2 rounded mb-2">
                                 <div class="col-10 d-flex flex-column align-items-center "
@@ -128,7 +128,6 @@ use Illuminate\View\View;
                                     </div>
 
                                 </div>
-
                                 <div class="col-10 p-0 justify-content-center mt-2">
                                     <label for="" class="form-label text-white fs-2">Isi Evaluasi</label>
                                     <textarea name="evaluation" id="" cols="30" rows="5" class="form-control"
@@ -136,7 +135,7 @@ use Illuminate\View\View;
                                 </div>
                             </div>
 
-                            <input type="hidden" name="officer" value="{{ $officer->id }}">
+                            <input type="hidden" name="satpam" value="{{ $satpam->id }}">
                             <div class="row">
                                 <div class="col d-flex justify-content-center">
                                     <button type="submit" class="btn btn-primary"><span

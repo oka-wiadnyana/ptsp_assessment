@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('officer', function (Blueprint $table) {
-            $table->string('active')->nullable()->default('true')->after('foto');
+        Schema::table('satpam_result', function (Blueprint $table) {
+            $table->integer('result_komunikasi')->after('result')->nullable();
+            $table->integer('result_kompetensi')->after('result_komunikasi')->nullable();
         });
     }
 
@@ -21,7 +22,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('officer', function (Blueprint $table) {
+        Schema::table('satpam_result', function (Blueprint $table) {
             //
         });
     }

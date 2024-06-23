@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::post('result/insert',[ResultController::class,'insert'])->name('result.insert');
+Route::post('result/insert_satpam',[ResultController::class,'insertSatpam'])->name('result_satpam.insert');
 
 Route::middleware('guest')->group(function(){
    

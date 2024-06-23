@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('officer', function (Blueprint $table) {
-            $table->string('active')->nullable()->default('true')->after('foto');
+        Schema::table('result', function (Blueprint $table) {
+            $table->text('evaluation')->after('result')->nullable();
         });
     }
 
@@ -21,7 +21,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('officer', function (Blueprint $table) {
+        Schema::table('result', function (Blueprint $table) {
             //
         });
     }
