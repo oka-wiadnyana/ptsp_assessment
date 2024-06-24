@@ -19,7 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware(['cors'])->group(function () {
-    Route::post('/upload_foto', [ApiController::class, 'uploadFoto']);
-    Route::post('/upload_foto_satpam', [ApiController::class, 'uploadFotoSatpam']);
-});
+
+Route::post('/upload_foto', [ApiController::class, 'uploadFoto']);
+Route::post('/upload_foto_satpam', [ApiController::class, 'uploadFotoSatpam']);
