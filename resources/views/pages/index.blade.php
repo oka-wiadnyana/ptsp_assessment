@@ -1,157 +1,130 @@
 <?php
-    use App\Models\Officer;
-    use function Laravel\Folio\name;
-    use Illuminate\View\View;
- 
-    use function Laravel\Folio\render;
+use App\Models\Officer;
+use function Laravel\Folio\name;
+use Illuminate\View\View;
 
-    name('/');
+use function Laravel\Folio\render;
 
-    render(function (View $view, Officer $officers) {
-   
-    
-    return $view->with('officers', $officers->where('active','true')->get());
-}); 
+name('/');
+
+render(function (View $view, Officer $officers) {
+    return $view->with('officers', $officers->where('active', 'true')->get());
+});
 
 ?>
+<!DOCTYPE html>
+<html>
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
+<head>
+    <!-- Meta-Information -->
+    <title>Ekaplus</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('img') }}/logo-text.png">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ env('APP_NAME') }}</title>
+    <!-- Vendor: Bootstrap 4 Stylesheets  -->
+    <link rel="stylesheet" href="{{ asset('assets') }}/css/bootstrap.min.css" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   
-    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Monomaniac+One&family=Nova+Square&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 
-    <style>
-        img~span{
-            font-family: 'Nova Square', sans-serif;
-        }
+    <!-- Our Website CSS Styles -->
+    <link rel="stylesheet" href="{{ asset('assets') }}/css/icons.min.css" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets') }}/css/main.css" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets') }}/css/responsive.css" type="text/css">
 
-        .title{
-            font-family: 'Monomaniac One', sans-serif;
-        }
+    <!-- Color Scheme -->
+    <link rel="stylesheet" href="{{ asset('assets') }}/css/color-schemes/color.css" type="text/css" title="color3">
+    <link rel="alternate stylesheet" href="{{ asset('assets') }}/css/color-schemes/color1.css" title="color1">
+    <link rel="alternate stylesheet" href="{{ asset('assets') }}/css/color-schemes/color2.css" title="color2">
+    <link rel="alternate stylesheet" href="{{ asset('assets') }}/css/color-schemes/color4.css" title="color4">
+    <link rel="alternate stylesheet" href="{{ asset('assets') }}/css/color-schemes/color5.css" title="color5">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
 
-        .slider__arrow{
-            position: absolute;
-        }
+<body class=""
+    style="height: 100vh;background-image: url({{ asset('img') }}/login-bg.png);background-size: cover">
 
-        .slider__arrow--prev{
-            bottom: 50%;
-            
-        }
-        .slider__arrow--next{
-            bottom: 50%;
-            right: 0;
+    <div class="d-flex align-items-center justify-content-center" style="height: 100%; width: 100%;">
+        <div class="p-3 col-md-8 mx-2 mx-md-0"style=" background-color: white; border-radius: 1rem">
+            <div class="col justify-content-center">
 
-        }
-    </style>
-   
-    @livewireStyles
-    <link href="{{ asset('starjs') }}/css/star-rating.css" rel="stylesheet"> 
-  </head>
-  <body>
-    <div class="fluid-container" style="background-image: url('{{ asset('img/bg-main.jpg') }}'); background-repeat:no-repeat; background-size: cover">
-        <div class="vh-100 d-flex justify-content-center align-items-center p-2" >
-            <div class="col-md-6" >
-                <div class="card h-100" style="background-image: url('{{ asset('img/bg-card.png') }}'); background-repeat:no-repeat; background-size: cover; border-radius: 10% " >
-                   
-                    <div class="card-body">
-                      
-                        <div class="row text-center d-flex flex-column align-items-center">
-                            <img src="https://www.pn-denpasar.go.id/assets/img/logo/pt-denpasar.png" alt="" class="" width="100rem">
-                            <span class="h1 title text-white ">REVIEW PETUGAS PTSP</span>
-                        </div>
-                        <div class="glide">
-                            <div class="glide__track" data-glide-el="track"><ul class="glide__slides">
-                                @foreach ($officers as $officer)
-                                <a class="btn p-0 text-decoration-none" href="{{ url('assessment/'.$officer->id) }}" style="outline: 0;">
-                                <li class="glide__slide">
-                                    
-                                        <div class="col d-flex flex-column justify-content-center">
-                                       
+                <div class="col text-center">
+                    <img src="https://www.pn-denpasar.go.id/assets/img/logo/pt-denpasar.png" alt=""
+                        class="" width="80rem">
 
-                                      
-                                            <img src="{{ asset('officer_image/'.$officer->foto) }}" alt="" class="img-fluid" style="border-radius: 50%"><span class="text-center h3 text-white">{{ $officer->nick_name }}</span>
-                                     
-                                        </div>
-                                  
-                                    
-                                    
-                                </li>
-                            </a>
-                                @endforeach
-                               
-                               
-                                
-                              </ul>
-                             
-                            </div>
-                            <div data-glide-el="controls">
-                                <button class="slider__arrow slider__arrow--prev glide__arrow glide__arrow--prev" data-glide-dir="<" style="border-radius: 50%; background-color: rgba(20, 124, 143, 0.5)">
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
-                                    <path d="M0 12l10.975 11 2.848-2.828-6.176-6.176H24v-3.992H7.646l6.176-6.176L10.975 1 0 12z"/>
-                                  </svg>
-                                </button>
-                            
-                                <button class="slider__arrow slider__arrow--next glide__arrow glide__arrow--next" data-glide-dir=">" style="border-radius: 50%; background-color: rgba(20, 124, 143, 0.5)">
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
-                                    <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"/>
-                                  </svg>
-                                </button>
-                              </div>
-                            
-                          </div>
-                          
-                    </div>
-                  </div>
-          
-           
+                </div>
+                <div class="col text-center">
+
+                    <h4 style="font-size: 3rem; font-weight: bold; font-family: 'Poppins';">Aplikasi EkaPlus
+                    </h4>
+
+                </div>
+
+
+            </div>
+            <div class="col d-md-flex mt-5">
+                <div class="col text-center">
+                    <a href="{{ url('ptsp') }}">
+                        <img src="{{ asset('img') }}/evaluation.png" alt="" class="img-fluid"
+                            style="width: 10rem;height: 10rem">
+                        <p style="font-family: 'Poppins'; font-size: 1rem; font-weight: bold">Reviu
+                            Petugas PTSP</p>
+                    </a>
+                </div>
+                <div class="col text-center">
+                    <a href="{{ url('satpam') }}">
+
+                        <img src="{{ asset('img') }}/security-audit.png" alt="" class="img-fluid"
+                            style="width: 10rem;height: 10rem">
+                        <p style="font-family: 'Poppins'; font-size: 1rem; font-weight: bold">Reviu
+                            Petugas keamanan</p>
+                    </a>
                 </div>
             </div>
-           
+        </div>
     </div>
-   
 
-    
-    @vite('resources/js/app.js')
-    <script type="module">
-        
-       
-        new Glide('.glide', {
-            type: 'carousel',
-            startAt: 0,
-            perView: 2
-        }).mount()
-    </script>
-    <script>
 
-        function showModal(id){
-            Livewire.dispatch('show-modal-rating',{id});
-        }
-    </script>
-  
-    
-   
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+    <!-- Vendor: Javascripts -->
+    <script src="{{ asset('assets') }}/js/jquery.min.js" type="text/javascript"></script>
+    <!-- Vendor: Followed by our custom Javascripts -->
+    <script src="{{ asset('assets') }}/js/bootstrap.min.js" type="text/javascript"></script>
+    {{-- <script src="{{ asset('assets') }}/js/select2.min.js" type="text/javascript"></script> --}}
+    <script src="{{ asset('assets') }}/js/slick.min.js" type="text/javascript"></script>
+
+    <!-- Our Website Javascripts -->
+    <script src="{{ asset('assets') }}/js/isotope.min.js" type="text/javascript"></script>
+    <script src="{{ asset('assets') }}/js/isotope-int.js" type="text/javascript"></script>
+    <script src="{{ asset('assets') }}/js/jquery.counterup.js" type="text/javascript"></script>
+    <script src="{{ asset('assets') }}/js/waypoints.min.js" type="text/javascript"></script>
+    <script src="{{ asset('assets') }}/js/highcharts.js" type="text/javascript"></script>
+    <script src="{{ asset('assets') }}/js/exporting.js" type="text/javascript"></script>
+    <script src="{{ asset('assets') }}/js/highcharts-more.js" type="text/javascript"></script>
+    <script src="{{ asset('assets') }}/js/moment.min.js" type="text/javascript"></script>
+    <script src="{{ asset('assets') }}/js/jquery.circliful.min.js" type="text/javascript"></script>
+    <script src="{{ asset('assets') }}/js/fullcalendar.min.js" type="text/javascript"></script>
+    <script src="{{ asset('assets') }}/js/jquery.downCount.js" type="text/javascript"></script>
+    <script src="{{ asset('assets') }}/js/jquery.bootstrap-touchspin.min.js" type="text/javascript"></script>
+    <script src="{{ asset('assets') }}/js/jquery.formtowizard.js" type="text/javascript"></script>
+    <script src="{{ asset('assets') }}/js/form-validator.min.js" type="text/javascript"></script>
+    <script src="{{ asset('assets') }}/js/form-validator-lang-en.min.js" type="text/javascript"></script>
+    <script src="{{ asset('assets') }}/js/cropbox-min.js" type="text/javascript"></script>
+    <script src="{{ asset('assets') }}/js/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="{{ asset('assets') }}/js/ion.rangeSlider.min.js" type="text/javascript"></script>
+    <script src="{{ asset('assets') }}/js/jquery.poptrox.min.js" type="text/javascript"></script>
+    <script src="{{ asset('assets') }}/js/styleswitcher.js" type="text/javascript"></script>
+    <script src="{{ asset('assets') }}/js/main.js" type="text/javascript"></script>
     @include('sweetalert::alert')
+</body>
 
-    @livewireScripts
-  </body>
-    
-     
-   
-    
 </html>
