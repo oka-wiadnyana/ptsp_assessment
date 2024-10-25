@@ -70,7 +70,7 @@ use Illuminate\View\View;
                                 class="" width="100rem">
                             <span class="h1 title text-white ">REVIEW PETUGAS PTSP</span>
                             <img src="{{ asset('officer_image/' . $officer->foto) }}" alt=""
-                                style="border-radius: 50%">
+                                style="border-radius: 50%; width: 10rem">
                             <span class="text-white h3">{{ $officer->nick_name }}</span>
                         </div>
                         <form action="{{ route('result.insert') }}" method="POST">
